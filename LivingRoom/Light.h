@@ -12,6 +12,7 @@
 class Light {
 private:
 	int LIGHT;
+	unsigned long last_interrupt_time = 0;
 	bool isOn;
 protected:
 public:
@@ -19,6 +20,7 @@ public:
 	void TurnOn();
 	void TurnOff();
 	bool IsOn();
+	void ToggleLight();
 };
 
 #endif

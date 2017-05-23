@@ -8,7 +8,7 @@
 Light::Light(int lightPin) {
 	LIGHT = lightPin;
 	pinMode(LIGHT, OUTPUT);
-	TurnOff();
+	TurnOn();
 }
 
 void Light::TurnOn() {
@@ -23,4 +23,20 @@ void Light::TurnOff() {
 
 bool Light::IsOn() {
 	return isOn;
+}
+
+void Light::ToggleLight()
+{
+	unsigned long interrupt_time = millis();
+	if (interrupt_time - last_interrupt_time > 500)
+	{
+		if (isOn) {
+			TurnOff();
+		}
+		else
+		{
+			TurnOn();
+		}
+	}
+	last_interrupt_time = interrupt_time;
 }
